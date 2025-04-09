@@ -1,13 +1,16 @@
 import { NavLink, useLocation } from "react-router";
 import "./NavigationBar.css";
+import { useAnimalsStore } from "../../hooks/animals-store/animals-store";
 
 const NavigationBar = (): React.ReactNode => {
   const location = useLocation();
   const currentRoute = location.pathname;
+  const { animals } = useAnimalsStore();
 
   return (
     <div className="navigation-bar-root">
       <ul className="navigation-bar-links">
+        <li>Bears: {animals}</li>
         <li>
           <NavLink to="/product" className={currentRoute == "/product" ? "navigation-link-selected" : ""}>
             Product
@@ -28,6 +31,7 @@ const NavigationBar = (): React.ReactNode => {
             Pricing
           </NavLink>
         </li>
+        <li>Bears: {animals}</li>
       </ul>
     </div>
   );
